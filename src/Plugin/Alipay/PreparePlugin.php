@@ -101,10 +101,11 @@ class PreparePlugin implements PluginInterface
             return $config['app_public_cert_sn'];
         }
 
-        $path = $config['app_public_cert_path'] ?? null;
+        $path = $config['app_public_cert_path'] ?? '';
 
-        if (is_null($path)) {
-            throw new InvalidConfigException(Exception::ALIPAY_CONFIG_ERROR, 'Missing Alipay Config -- [app_public_cert_path]');
+        if (empty($path)) {
+            return ''; /* @link https://github.com/yansongda/pay/issues/750 */
+            // throw new InvalidConfigException(Exception::ALIPAY_CONFIG_ERROR, 'Missing Alipay Config -- [app_public_cert_path]');
         }
 
         $cert = file_get_contents($path);
@@ -132,10 +133,11 @@ class PreparePlugin implements PluginInterface
             return $config['alipay_root_cert_sn'];
         }
 
-        $path = $config['alipay_root_cert_path'] ?? null;
+        $path = $config['alipay_root_cert_path'] ?? '';
 
-        if (is_null($path)) {
-            throw new InvalidConfigException(Exception::ALIPAY_CONFIG_ERROR, 'Missing Alipay Config -- [alipay_root_cert_path]');
+        if (empty($path)) {
+            return '';
+            // throw new InvalidConfigException(Exception::ALIPAY_CONFIG_ERROR, 'Missing Alipay Config -- [alipay_root_cert_path]');
         }
 
         $sn = '';
