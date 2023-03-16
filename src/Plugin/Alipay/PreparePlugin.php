@@ -101,7 +101,7 @@ class PreparePlugin implements PluginInterface
             return $config['app_public_cert_sn'];
         }
 
-        $path = $config['app_public_cert_path'] ?? '';
+        $path = $config['app_public_cert_path'] ?? null;
 
         if (empty($path)) {
             return ''; /* @link https://github.com/yansongda/pay/issues/750 */
@@ -133,7 +133,7 @@ class PreparePlugin implements PluginInterface
             return $config['alipay_root_cert_sn'];
         }
 
-        $path = $config['alipay_root_cert_path'] ?? '';
+        $path = $config['alipay_root_cert_path'] ?? null;
 
         if (empty($path)) {
             return '';
